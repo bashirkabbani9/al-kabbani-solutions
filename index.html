@@ -198,60 +198,13 @@
             <div class="container">
                 <div class="section-header reveal">
                     <h2 class="section-title">Let's Talk</h2>
-                    <p class="section-subtitle">Ready to explore what AI can do for your business? Tell us about your project and we'll get back to you within 24 hours.</p>
+                    <p class="section-subtitle">Ready to explore what AI can do for your business? Book a free consultation call and let's discuss your goals.</p>
                 </div>
 
-                <div class="contact__form-wrapper reveal">
-                    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xnjzkaep" method="POST">
-                        <!-- Honeypot for spam -->
-                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
-                        <div class="contact-form__row">
-                            <div class="contact-form__group">
-                                <label for="name" class="contact-form__label">Full Name <span aria-hidden="true">*</span></label>
-                                <input type="text" id="name" name="name" class="contact-form__input" placeholder="John Doe" required>
-                            </div>
-
-                            <div class="contact-form__group">
-                                <label for="email" class="contact-form__label">Email Address <span aria-hidden="true">*</span></label>
-                                <input type="email" id="email" name="email" class="contact-form__input" placeholder="john@company.com" required>
-                            </div>
-                        </div>
-
-                        <div class="contact-form__row">
-                            <div class="contact-form__group">
-                                <label for="company" class="contact-form__label">Company Name</label>
-                                <input type="text" id="company" name="company" class="contact-form__input" placeholder="Acme Inc.">
-                            </div>
-
-                            <div class="contact-form__group">
-                                <label for="service" class="contact-form__label">Service Interest</label>
-                                <select id="service" name="service" class="contact-form__input contact-form__select">
-                                    <option value="" disabled selected>Select a service</option>
-                                    <option value="AI Consulting">AI Consulting</option>
-                                    <option value="Custom AI Solutions">Custom AI Solutions</option>
-                                    <option value="Process Automation">Process Automation</option>
-                                    <option value="Not Sure Yet">Not Sure Yet</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="contact-form__group">
-                            <label for="message" class="contact-form__label">Your Message <span aria-hidden="true">*</span></label>
-                            <textarea id="message" name="message" class="contact-form__input contact-form__textarea" placeholder="Tell us about your project..." rows="5" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn--primary btn--lg contact-form__submit" id="submit-btn">
-                            <span class="contact-form__submit-text">Send Message</span>
-                            <span class="contact-form__submit-loading" aria-hidden="true">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                                </svg>
-                            </span>
-                        </button>
-
-                        <div class="contact-form__status" id="form-status" role="alert" aria-live="polite"></div>
-                    </form>
+                <div class="contact__calendly-wrapper reveal">
+                    <!-- Calendly inline widget - replace YOUR-LINK-HERE with your Calendly URL -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/bashirkabbani9/30min?background_color=0b0f19&text_color=f1f5f9&primary_color=00d4aa" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                 </div>
             </div>
         </section>
