@@ -202,15 +202,18 @@ section {
 }
 
 .nav__logo {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav__logo-img {
+    height: 36px;
+    width: auto;
 }
 
 .nav__logo:hover {
-    color: var(--color-text-primary);
+    opacity: 0.9;
 }
 
 .nav__toggle {
@@ -578,15 +581,18 @@ section {
 }
 
 .footer__logo {
-    font-family: var(--font-heading);
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer__logo-img {
+    height: 32px;
+    width: auto;
 }
 
 .footer__logo:hover {
-    color: var(--color-text-primary);
+    opacity: 0.9;
 }
 
 .footer__tagline {
