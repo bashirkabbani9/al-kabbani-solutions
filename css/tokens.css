@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Marcellus&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap");
+
+/* ============================================================================
+   QUICK START
+   Link this one file and the identity applies:  <link rel="stylesheet" href="tokens.css">
+   Fonts load via the @import above — nothing else to add.
+   Faster alternative for production: delete the @import and put this in <head>
+   BEFORE the stylesheet, so the fonts fetch in parallel instead of in series:
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Marcellus&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap">
+
+   WHERE THIS FILE DOES NOT REACH — these need their own treatment, not CSS:
+     · HTML email (Outlook ignores custom properties and webfonts — inline it, fall back
+       to Georgia and Arial)
+     · Word, PowerPoint, Google Docs (install the four fonts locally, set a theme)
+     · Reels, TikTok, anything rendered as video
+   ============================================================================ */
+/* ============================================================================
+   AL KABBANI SOLUTIONS — DESIGN TOKENS
+   Edition 2 · August 2026
+   Palette: the five glazes (Damascene ceramic + zellij) on Damascus limestone.
+   Proportion: root-2, derived from the khatem — a square overlaid at 45°.
+   Layout: THE REGISTER — rail / argument / figures.
+   Fonts:
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..700;1,62..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Marcellus&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap">
+   ============================================================================ */
+
+:root{
+  /* ---- ground: Damascus limestone — beige biased green, never cream ---- */
+  --ground:#E9E4D7;
+  --surface:#F6F3EB;
+  --sunken:#DED8C8;
+  --ink:#1B231D;
+  --body:#3C443C;
+  --muted:#6E7469;
+  --rule:#CFC7B3;
+  --rule-firm:#B0A791;
+
+  /* ---- the five glazes. cypress leads; bole supports. ---- */
+  --cypress:#1D4736;    --cypress-t:#C9D9CB;    /* primary: brand, rules, links   */
+  --bole:#B0543A;       --bole-t:#EBC7B5;       /* risk, constraint, what it costs*/
+  --brass:#9C7527;      --brass-t:#EBDCB0;      /* highlight, assumption flag     */
+  --turquoise:#26686D;  --turquoise-t:#C1D8D6;  /* data, measurement, charts      */
+  --manganese:#5A3A55;  --manganese-t:#D9C6D3;  /* fifth category only            */
+
+  /* ---- chart order. never reorder; recognition depends on it. ---- */
+  --chart-1:var(--turquoise); --chart-2:var(--cypress); --chart-3:var(--brass);
+  --chart-4:var(--bole);      --chart-5:var(--manganese);
+
+  /* ---- type: four faces, four jobs ----
+     display  Marcellus  — inscriptional. Headings, covers, wordmark. 20px FLOOR.
+                           One weight, no italic. Emphasis = size or case, never bold.
+     serif    Newsreader — standfirsts, ledes, pull quotes, italics, anything long.
+     sans     Archivo    — all body copy, all UI, all forms.
+     mono     Plex Mono  — every number, label, eyebrow and reference.            */
+  --display:"Marcellus",Georgia,"Times New Roman",serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  /* ---- type scale: half-steps of root-2 (×1.1892) ---- */
+  --t00:12px;  /* Plex Mono 500 · eyebrows, labels, refs · .14em · uppercase */
+  --t0:14px;   /* Archivo · captions, tables, figure labels */
+  --t1:17px;   /* Archivo · BODY — the base */
+  --t2:20px;   /* Newsreader 400 · standfirst — also the Marcellus floor */
+  --t3:24px;   /* Marcellus · card title, pull quote */
+  --t4:29px;   /* Marcellus · sub-section, large figures */
+  --t5:34px;   /* Marcellus · section heading */
+  --t6:40px;
+  --t7:48px;   /* Marcellus · cover heading */
+  --t8:57px;
+  --t9:68px;   /* Marcellus · hero — one per page */
+
+  --lh-body:1.62;
+  --lh-head:1.14;
+  --measure:34em;
+  --track-label:.14em;
+  --track-display:.005em;   /* Marcellus title case */
+  --track-caps:.08em;       /* Marcellus set in caps — always loosen */
+
+  /* ---- spacing: full steps of root-2 from 8 ---- */
+  --s1:8px;  --s2:11px; --s3:16px; --s4:23px; --s5:32px;
+  --s6:45px; --s7:64px; --s8:91px; --s9:128px;
+
+  /* ---- the register: three columns ---- */
+  --col-rail:88px;   /* index — section number and label, mono */
+  --col-fig:208px;   /* figures — the column that has to win on its own */
+
+  /* ---- form ---- */
+  --radius:3px;                    /* 0 or 3. never more. */
+  --hair:1px solid var(--rule);
+  --hair-firm:1px solid var(--rule-firm);
+  --close:2px solid var(--ink);    /* the closing rule above a signature */
+  --shadow:0 1px 2px rgba(27,35,29,.05), 0 12px 32px -18px rgba(27,35,29,.22);
+
+  /* ---- motion: 160 and 320 are root-2 apart. nothing exceeds 400ms. ---- */
+  --ease:cubic-bezier(.2,.7,.3,1);
+  --dur:160ms;
+  --dur-in:320ms;
+}
+
+/* ---- dark / night. also the ground for inverted video frames. ---- */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#141812; --surface:#1E231C; --sunken:#0F1310;
+    --ink:#EFEBDD; --body:#C6C9BC; --muted:#8D9285;
+    --rule:#2E342B; --rule-firm:#465041;
+    --cypress:#86BFA1;   --cypress-t:#1B2A20;
+    --bole:#E39176;      --bole-t:#2E1D17;
+    --brass:#DBB35E;     --brass-t:#2C2415;
+    --turquoise:#6FB8BC; --turquoise-t:#16292B;
+    --manganese:#C299BA; --manganese-t:#271B25;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#141812; --surface:#1E231C; --sunken:#0F1310;
+  --ink:#EFEBDD; --body:#C6C9BC; --muted:#8D9285;
+  --rule:#2E342B; --rule-firm:#465041;
+  --cypress:#86BFA1;   --cypress-t:#1B2A20;
+  --bole:#E39176;      --bole-t:#2E1D17;
+  --brass:#DBB35E;     --brass-t:#2C2415;
+  --turquoise:#6FB8BC; --turquoise-t:#16292B;
+  --manganese:#C299BA; --manganese-t:#271B25;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.7);
+}
+
+/* ============================================================================
+   BASE
+   ============================================================================ */
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--body);
+  font-family:var(--sans); font-size:var(--t1); line-height:var(--lh-body);
+  margin:0; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{
+  font-family:var(--display); font-weight:400; color:var(--ink);
+  line-height:var(--lh-head); letter-spacing:var(--track-display);
+  text-wrap:balance; margin:0;
+}
+h1{font-size:var(--t7)}
+h2{font-size:var(--t5)}
+h3{font-size:var(--t3)}
+h4{font-family:var(--sans);font-size:var(--t1);font-weight:600;color:var(--ink);margin:0}
+p{margin:0;max-width:var(--measure)}
+a{color:var(--cypress);text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--cypress);outline-offset:3px}
+table{border-collapse:collapse;font-variant-numeric:tabular-nums}
+td,th{border-bottom:var(--hair);padding:9px var(--s3) 9px 0;text-align:left}
+
+/* Marcellus set in caps — the inscriptional mode. Always loosen the tracking. */
+.inscribed{font-family:var(--display);text-transform:uppercase;letter-spacing:var(--track-caps)}
+
+/* the eyebrow — the detail that makes a page read surveyed, not marketed */
+.eyebrow{font-family:var(--mono);font-size:var(--t00);font-weight:500;
+  letter-spacing:var(--track-label);text-transform:uppercase;color:var(--muted)}
+
+/* the standfirst — Newsreader, never Marcellus */
+.lede{font-family:var(--serif);font-weight:400;font-size:var(--t2);
+  line-height:1.5;color:var(--body);max-width:36em}
+
+/* ---- ornament, no SVG required. both take their colour from `color`. ----
+   <span class="khatem"></span>                    — the single mark, sized in em
+   <div class="zellij" style="opacity:.16"></div>  — the tessellation, as a background
+   Covers, dividers, banners and video end cards only. Never behind body text.        */
+:root{
+  --khatem-mark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-40 -40 80 80'%3E%3Cpolygon points='40,0 28.29,11.71 28.29,28.29 11.71,28.29 0,40 -11.71,28.29 -28.29,28.29 -28.29,11.71 -40,0 -28.29,-11.71 -28.29,-28.29 -11.71,-28.29 0,-40 11.71,-28.29 28.29,-28.29 28.29,-11.71'/%3E%3C/svg%3E");
+  --khatem-tile:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpolygon points='40.0,0.0 28.29,11.71 28.29,28.29 11.71,28.29 0.0,40.0 -11.71,28.29 -28.29,28.29 -28.29,11.71 -40.0,0.0 -28.29,-11.71 -28.29,-28.29 -11.71,-28.29 0.0,-40.0 11.71,-28.29 28.29,-28.29 28.29,-11.71'/%3E%3Cpolygon points='120.0,0.0 108.28999999999999,11.71 108.28999999999999,28.29 91.71000000000001,28.29 80.0,40.0 68.28999999999999,28.29 51.71,28.29 51.71,11.71 40.0,0.0 51.71,-11.71 51.71,-28.29 68.28999999999999,-28.29 80.0,-40.0 91.71000000000001,-28.29 108.28999999999999,-28.29 108.28999999999999,-11.71'/%3E%3Cpolygon points='40.0,80.0 28.29,91.71000000000001 28.29,108.28999999999999 11.71,108.28999999999999 0.0,120.0 -11.71,108.28999999999999 -28.29,108.28999999999999 -28.29,91.71000000000001 -40.0,80.0 -28.29,68.28999999999999 -28.29,51.71 -11.71,51.71 0.0,40.0 11.71,51.71 28.29,51.71 28.29,68.28999999999999'/%3E%3Cpolygon points='120.0,80.0 108.28999999999999,91.71000000000001 108.28999999999999,108.28999999999999 91.71000000000001,108.28999999999999 80.0,120.0 68.28999999999999,108.28999999999999 51.71,108.28999999999999 51.71,91.71000000000001 40.0,80.0 51.71,68.28999999999999 51.71,51.71 68.28999999999999,51.71 80.0,40.0 91.71000000000001,51.71 108.28999999999999,51.71 108.28999999999999,68.28999999999999'/%3E%3C/svg%3E");
+}
+.khatem{
+  display:inline-block;width:1em;height:1em;background:currentColor;color:var(--cypress);
+  -webkit-mask:var(--khatem-mark) center/contain no-repeat;
+          mask:var(--khatem-mark) center/contain no-repeat;
+}
+.zellij{
+  background:currentColor;color:var(--cypress);
+  -webkit-mask:var(--khatem-tile) 0 0/80px 80px repeat;
+          mask:var(--khatem-tile) 0 0/80px 80px repeat;
+}
+
+/* ---- the ablaq band: alternating stone courses. once or twice per document. ---- */
+.ablaq{height:7px;background:repeating-linear-gradient(90deg,
+  var(--cypress) 0 22px, transparent 22px 44px)}
+
+/* ---- primary control ---- */
+.btn{font-family:var(--sans);font-size:var(--t0);font-weight:600;
+  background:var(--cypress);color:var(--surface);border:0;border-radius:0;
+  padding:var(--s2) var(--s4);cursor:pointer;transition:opacity var(--dur) var(--ease)}
+.btn:hover{opacity:.86}
+.btn--quiet{background:transparent;color:var(--cypress);box-shadow:inset 0 0 0 1px var(--cypress)}
+
+/* ============================================================================
+   THE REGISTER — the house layout.
+   Three columns: index, argument, figures. Every row uses the same template,
+   so the columns line up down the page without needing subgrid.
+
+     <div class="row">
+       <div class="rail"><b>01</b>Empty running</div>
+       <div class="arg"> …prose… </div>
+       <div class="fig">
+         <div class="figure bole"><p class="fig-n">22%</p><p class="fig-l">Empty running</p>
+              <p class="fig-s">Assumed — sector figure</p></div>
+         <div class="gloss assumed"><b>Assumed</b>Your planner will know the real number.</div>
+       </div>
+     </div>
+
+   THE RULE: cover the argument column. If the figures column alone does not make
+   the case, the numbers are not good enough yet — do not send it.
+   ============================================================================ */
+.row{
+  display:grid;
+  grid-template-columns:var(--col-rail) minmax(0,1fr) var(--col-fig);
+  gap:0 var(--s5);
+  border-top:var(--hair);
+  padding:var(--s4) 0 var(--s5);
+  align-items:start;
+}
+.rail{
+  font-family:var(--mono);font-size:var(--t00);line-height:1.55;
+  letter-spacing:var(--track-label);text-transform:uppercase;color:var(--muted);
+}
+.rail b{display:block;color:var(--ink);font-size:var(--t0);font-weight:600;letter-spacing:.06em}
+.arg{display:flex;flex-direction:column;gap:var(--s3);min-width:0;max-width:var(--measure)}
+.fig{
+  display:flex;flex-direction:column;gap:var(--s4);
+  border-left:var(--hair-firm);padding-left:var(--s3);
+}
+
+/* a figure. maximum three per row — beyond that it stops being scannable. */
+.figure{display:flex;flex-direction:column;gap:3px}
+.fig-n{
+  font-family:var(--mono);font-weight:600;font-size:var(--t4);
+  line-height:1;letter-spacing:-.02em;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.fig-n.sm{font-size:var(--t2)}
+.fig-l{font-family:var(--sans);font-size:var(--t0);font-weight:600;color:var(--ink);line-height:1.35}
+.fig-s{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);line-height:1.5}
+
+/* meaning-coded, never decorative:
+   bole = what it is costing · cypress = what is working or gained
+   turquoise = neutral measurement · brass = flagged as an assumption */
+.figure.bole .fig-n{color:var(--bole)}
+.figure.cypress .fig-n{color:var(--cypress)}
+.figure.turquoise .fig-n{color:var(--turquoise)}
+.figure.brass .fig-n{color:var(--brass)}
+
+/* the apparatus — assumptions, sources, refusals. subordinate to the figures. */
+.gloss{font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--muted);
+  display:flex;flex-direction:column;gap:4px}
+.gloss b{letter-spacing:var(--track-label);text-transform:uppercase;font-weight:600}
+.gloss.assumed b{color:var(--brass)}
+.gloss.source b{color:var(--turquoise)}
+.gloss.limit b{color:var(--bole)}
+
+/* narrow screens: figures move ABOVE the argument and run as a strip,
+   so a skimmer still meets the numbers first. */
+@media (max-width:820px){
+  .row{grid-template-columns:1fr;gap:var(--s3);padding-bottom:var(--s4)}
+  .rail b{display:inline;margin-right:var(--s2)}
+  .fig{order:-1;flex-direction:row;flex-wrap:wrap;gap:var(--s4);
+    border-left:0;border-top:var(--hair-firm);padding-left:0;padding-top:var(--s2)}
+  .gloss{flex-basis:100%}
+}
+
+/* print — proposals go out as PDF. keep all three columns. */
+@media print{
+  @page{size:A4;margin:18mm 16mm}
+  body{background:#fff;font-size:10.5pt}
+  .row{break-inside:avoid;--col-rail:56px;--col-fig:150px;gap:0 18px}
+  .fig-n{font-size:20pt}
+  .btn{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ============================================================================
+   THE KHATEM — paste into the page once, then <use href="#khatem"/>
+   Radius 40. Scale it; never redraw it.
+
+   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+     <g id="khatem"><polygon points="40,0 28.29,11.71 28.29,28.29 11.71,28.29 0,40
+       -11.71,28.29 -28.29,28.29 -28.29,11.71 -40,0 -28.29,-11.71 -28.29,-28.29
+       -11.71,-28.29 0,-40 11.71,-28.29 28.29,-28.29 28.29,-11.71"/></g>
+     <pattern id="zellij" width="80" height="80" patternUnits="userSpaceOnUse">
+       <g fill="var(--cypress)">
+         <use href="#khatem" x="0"  y="0"/>  <use href="#khatem" x="80" y="0"/>
+         <use href="#khatem" x="0"  y="80"/> <use href="#khatem" x="80" y="80"/>
+       </g>
+     </pattern>
+   </defs></svg>
+
+   Single mark:  <svg viewBox="-50 -50 100 100" fill="var(--cypress)"><use href="#khatem"/></svg>
+   Tessellation: <rect width="100%" height="100%" fill="url(#zellij)" fill-opacity=".16"/>
+                 — covers, dividers, banners and video end cards only. Never behind text.
+   ============================================================================ */

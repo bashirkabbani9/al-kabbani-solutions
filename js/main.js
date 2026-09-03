@@ -1,52 +1,47 @@
-// ===========================
-// 1. Scroll Reveal Animation
-// ===========================
-const revealElements = document.querySelectorAll('.reveal');
+// ============================================================================
+// AL KABBANI SOLUTIONS — site behaviour
+// Three things only: reveal on scroll, mobile nav, header state.
+// No framework, no build step. Every page loads this file.
+// ============================================================================
 
-const revealObserver = new IntersectionObserver((entries) => {
+// -- 1. reveal on scroll ------------------------------------------------------
+const revealEls = document.querySelectorAll('.reveal');
+if (revealEls.length) {
+  const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-        }
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
     });
-}, { threshold: 0.15 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach((el) => io.observe(el));
+}
 
-revealElements.forEach((el) => revealObserver.observe(el));
-
-// ===========================
-// 2. Mobile Navigation Toggle
-// ===========================
+// -- 2. mobile nav ------------------------------------------------------------
 const header = document.getElementById('header');
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
-const navLinks = navMenu.querySelectorAll('.nav__link, .nav__cta');
 
-navToggle.addEventListener('click', () => {
+if (header && navToggle && navMenu) {
+  const close = () => {
+    header.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  navToggle.addEventListener('click', () => {
     const isOpen = header.classList.toggle('nav-open');
-    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
     document.body.style.overflow = isOpen ? 'hidden' : '';
-});
+  });
 
-navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-        header.classList.remove('nav-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    });
-});
+  navMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+}
 
-// ===========================
-// 3. Header Scroll State
-// ===========================
-let lastScrollY = 0;
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-    lastScrollY = window.scrollY;
-}, { passive: true });
-
+// -- 3. header scroll state ---------------------------------------------------
+if (header) {
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}

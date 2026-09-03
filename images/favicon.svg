@@ -1,10 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00D4AA"/>
-      <stop offset="100%" stop-color="#6366F1"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="8" fill="#0B0F19"/>
-  <text x="16" y="22" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="url(#g)" text-anchor="middle">AK</text>
+  <rect width="32" height="32" rx="3" fill="#E9E4D7"/>
+  <g transform="translate(16 16) scale(0.335)">
+    <polygon points="40,0 28.29,11.71 28.29,28.29 11.71,28.29 0,40 -11.71,28.29 -28.29,28.29 -28.29,11.71 -40,0 -28.29,-11.71 -28.29,-28.29 -11.71,-28.29 0,-40 11.71,-28.29 28.29,-28.29 28.29,-11.71"
+             fill="none" stroke="#1D4736" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M-14 16 L0 -18 L14 16" fill="none" stroke="#1D4736" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="-8" y1="1.5" x2="8" y2="1.5" stroke="#1D4736" stroke-width="8" stroke-linecap="round"/>
+  </g>
 </svg>
