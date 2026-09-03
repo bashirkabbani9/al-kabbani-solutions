@@ -24,8 +24,15 @@ ul,ol{margin:0;padding:0;list-style:none}
 .section{padding:var(--s8) 0}
 .section--tight{padding:var(--s7) 0}
 .section--sunken{background:var(--sunken)}
-.section--tint{background:var(--cypress-t)}
-.section--tint .eyebrow{color:var(--cypress)}
+/* the tinted band: brass softened into the limestone. Warm rather than sage —
+   a blue-green wash fought the beige ground rather than sitting on it. */
+.section--tint{background:color-mix(in srgb, var(--brass-t) 52%, var(--ground))}
+.section--tint .eyebrow{color:var(--brass)}
+/* older browsers without color-mix fall back to the flat tint rather than to
+   an unstyled band */
+@supports not (background:color-mix(in srgb, red 50%, blue)){
+  .section--tint{background:var(--brass-t)}
+}
 .section--surface{background:var(--surface)}
 .section + .section{border-top:var(--hair)}
 
